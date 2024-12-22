@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "MemhirET - Our Story";
+const pageDescription = "How we came about";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Navbar />
+  <div class="w-full flex flex-col items-center justify-center pt-24 md:pt-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h1
+        class="font-display font-semibold text-3xl lg:text-4xl xl:text-6xl text-white mb-8"
+      >
+        Our Story
+      </h1>
+      <div
+        class="flex flex-col gap-4 lg:gap-6 font-body text-sm xl:text-lg text-gray-400"
+      >
+        <p>
+          MemhirET helps Ethiopian students learn better through simple digital
+          tools. We create learning solutions that make learning easier and more
+          fun. We help students track their progress by personalizing their
+          learning experience, making education more accessible to everyone.
+        </p>
+        <p>
+          At MemhirET, we're all about empowering schools with innovative tools
+          that address all stakeholders in the ecosystem. Our platform provides
+          customizable learning, real-time progress tracking, and learning
+          management solutions that align with the national curriculum. With
+          scalable and affordable solutions, MemhirET helps schools offer
+          high-quality education for the next generation of leaders.
+        </p>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <h1
+        class="font-display font-semibold text-3xl lg:text-4xl xl:text-6xl text-white mb-8"
+      >
+        Vision
+      </h1>
+      <div
+        class="flex flex-col gap-4 lg:gap-6 font-body text-sm xl:text-lg text-gray-400"
+      >
+        <p>
+          To be the lead of quality education, equipping students with the
+          skills, knowledge and values required to thrive in real-word
+          scenarios.
+        </p>
+        <p>
+          We envision a world where everyone has easy access to impact-driven,
+          world-class education.
+        </p>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col md:flex-row items-center gap-16">
+        <div class="w-full md:w-7/12">
+          <h1
+            class="font-display font-semibold text-3xl lg:text-4xl xl:text-6xl text-white mb-8"
+          >
+            What drives us
+          </h1>
+          <div
+            class="flex flex-col gap-4 lg:gap-6 font-body text-sm xl:text-lg text-gray-400"
+          >
+            <p>
+              Commitment to providing world-class and easily accessible
+              education, creating a learning environment where students are
+              challenged but manage to flourish and grow.
+            </p>
+            <p>
+              Belief that education is the key to a better future, and we are
+              committed to playing our role in creating a more equitable
+              landscape.
+            </p>
+          </div>
+        </div>
+        <div class="w-full md:w-5/12">
+          <img
+            src="/svgs/Graduation.svg"
+            alt="Graduation illustration"
+            class="w-full h-auto"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</Layout>

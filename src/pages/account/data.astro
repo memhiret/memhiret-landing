@@ -1,0 +1,210 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/NavBar.astro";
+import Footer from "../../components/Footer.astro";
+
+const pageTitle = "MemhirET - Account Management";
+const pageDescription = "Manage your account information";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Navbar />
+  <div class="w-full flex flex-col items-center justify-center pt-24 md:pt-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="text-center mb-12 flex flex-col items-center gap-8">
+        <h1
+          class="font-display font-semibold text-3xl lg:text-4xl xl:text-6xl text-white mb-6"
+        >
+          Account Data Deletion
+        </h1>
+        <p class="font-body text-sm xl:text-lg text-gray-400 max-w-2xl mx-auto">
+          Submit your credentials to request account data deletion.
+        </p>
+
+        <form class="w-full max-w-2xl mt-8 flex flex-col items-center gap-6">
+          <div class="w-full flex flex-col md:flex-row gap-4">
+            <div class="w-full">
+              <input
+                type="text"
+                name="firstname"
+                placeholder="First Name"
+                class="w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-gray-400 focus:border-memhirETBlue-500 focus:outline-none invalid:border-red-500"
+                required
+                minlength="2"
+                maxlength="24"
+                pattern="^[A-Za-z\s]{2,24}$"
+              />
+              <span class="hidden text-red-500 text-sm mt-1 firstname-error"
+              ></span>
+            </div>
+            <div class="w-full">
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+                class="w-full rounded-lg bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-gray-400 focus:border-memhirETBlue-500 focus:outline-none invalid:border-red-500"
+                required
+                pattern="^(\+251|09)\d{8}$"
+              />
+              <span class="hidden text-red-500 text-sm mt-1 phone-error"></span>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="px-12 py-4 bg-memhirETBlue-500 text-white font-body rounded-lg hover:bg-memhirETBlue-700 transition-all text-base disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+          >
+            <span class="submit-text">Submit Request</span>
+            <span class="loading-spinner hidden">
+              <svg
+                class="animate-spin h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.querySelector("form");
+  const submitButton = form?.querySelector('button[type="submit"]');
+  const submitText = submitButton?.querySelector(".submit-text");
+  const loadingSpinner = submitButton?.querySelector(".loading-spinner");
+
+  const firstnameInput = form?.querySelector('input[name="firstname"]');
+  const phoneInput = form?.querySelector('input[name="phone"]');
+  const firstnameError = form?.querySelector(".firstname-error");
+  const phoneError = form?.querySelector(".phone-error");
+
+  function validateFirstname(value: string): {
+    isValid: boolean;
+    message: string;
+  } {
+    const trimmed = value.trim();
+    if (trimmed.length < 2) {
+      return {
+        isValid: false,
+        message: "Name must be at least 2 characters long",
+      };
+    }
+    if (trimmed.length > 24) {
+      return { isValid: false, message: "Name must not exceed 24 characters" };
+    }
+    if (!/^[A-Za-z\s]{2,24}$/.test(trimmed)) {
+      return {
+        isValid: false,
+        message: "Name can only contain letters and spaces",
+      };
+    }
+    return { isValid: true, message: "" };
+  }
+
+  function validatePhone(value: string): { isValid: boolean; message: string } {
+    const phoneRegex = /^(\+251|09)\d{8}$/;
+    if (!phoneRegex.test(value)) {
+      return {
+        isValid: false,
+        message: "Phone must start with +251 or 09 followed by 8 digits",
+      };
+    }
+    return { isValid: true, message: "" };
+  }
+
+  firstnameInput?.addEventListener("input", (e) => {
+    const input = e.target as HTMLInputElement;
+    const result = validateFirstname(input.value);
+    if (firstnameError) {
+      firstnameError.textContent = result.message;
+      firstnameError.classList.toggle("hidden", result.isValid);
+    }
+  });
+
+  phoneInput?.addEventListener("input", (e) => {
+    const input = e.target as HTMLInputElement;
+    const result = validatePhone(input.value);
+    if (phoneError) {
+      phoneError.textContent = result.message;
+      phoneError.classList.toggle("hidden", result.isValid);
+    }
+  });
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const firstname = formData.get("firstname") as string;
+    const phone = formData.get("phone") as string;
+
+    const firstnameValidation = validateFirstname(firstname);
+    const phoneValidation = validatePhone(phone);
+
+    if (!firstnameValidation.isValid || !phoneValidation.isValid) {
+      if (firstnameError) {
+        firstnameError.textContent = firstnameValidation.message;
+        firstnameError.classList.toggle("hidden", firstnameValidation.isValid);
+      }
+      if (phoneError) {
+        phoneError.textContent = phoneValidation.message;
+        phoneError.classList.toggle("hidden", phoneValidation.isValid);
+      }
+      return;
+    }
+
+    if (submitButton && submitText && loadingSpinner) {
+      (submitButton as HTMLButtonElement).disabled = true;
+      submitText.textContent = "Submitting...";
+      loadingSpinner.classList.remove("hidden");
+    }
+
+    try {
+      const response = await fetch("https://submit-form.com/54O8197Ns", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          firstname: firstname.trim(),
+          phone: phone,
+        }),
+      });
+
+      if (response.ok) {
+        alert(
+          "You'll be contacted shortly! Thank you for submitting your request!"
+        );
+        window.location.href = "/";
+      } else {
+        alert("Failed to submit form!");
+      }
+    } catch (error) {
+      alert("Error occurred: " + error);
+      (e.target as HTMLFormElement).reset();
+    } finally {
+      if (submitButton && submitText && loadingSpinner) {
+        (submitButton as HTMLButtonElement).disabled = false;
+        submitText.textContent = "Submit Request";
+        loadingSpinner.classList.add("hidden");
+      }
+    }
+  });
+</script>

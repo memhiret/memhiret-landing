@@ -1,0 +1,21 @@
+{
+    "name": "METT - Personalized Test-Paths and Study-Guides",
+    "short_name": "METT",
+    "description": "Personalized test preparation paths and study guides, helping you ace your next test.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#153d59",
+    "theme_color": "#153d59",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

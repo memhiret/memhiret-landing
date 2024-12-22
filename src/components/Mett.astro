@@ -1,0 +1,125 @@
+---
+import { ArrowUpRight } from "lucide-react";
+---
+
+<section
+  id="products"
+  class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24"
+>
+  <div class="absolute inset-0 -z-10">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--color-grokBlue-500-rgb),0.08)_0%,transparent_70%)]"
+    >
+    </div>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <div class="space-y-8">
+      <span
+        class="px-4 py-1.5 rounded-md text-sm font-medium bg-blue-500/10 text-blue-400 inline-block"
+      >
+        METT App
+      </span>
+
+      <h2
+        class="text-4xl md:text-5xl font-bold text-memhirETWhite-500 font-bauhaus"
+      >
+        Your Personal
+        <span
+          class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400"
+        >
+          Exam Companion
+        </span>
+      </h2>
+
+      <p class="text-lg text-memhirETWhite-500/80">
+        Comprehensive study guides, personalized learning paths, helping you ace
+        your next test. Available Now.
+      </p>
+
+      <div class="flex flex-wrap gap-6">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-full bg-blue-500/10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-blue-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <span class="text-memhirETWhite-500/80">Practice Tests</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-full bg-blue-500/10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-blue-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <span class="text-memhirETWhite-500/80">Study Guides</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-full bg-blue-500/10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-blue-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              ></path>
+            </svg>
+          </div>
+          <span class="text-memhirETWhite-500/80">Smart Learning</span>
+        </div>
+      </div>
+
+      <a
+        href="https://mett.memhiret.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
+      >
+        Check it out
+        <ArrowUpRight
+          className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+        />
+      </a>
+    </div>
+
+    <div class="relative">
+      <div
+        class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-3xl rounded-full"
+      >
+      </div>
+      <div class="relative">
+        <img
+          src="/imgs/CTA.png"
+          alt="METT App Interface"
+          class="w-full max-w-md mx-auto drop-shadow-2xl rounded-3xl"
+        />
+      </div>
+    </div>
+  </div>
+</section>

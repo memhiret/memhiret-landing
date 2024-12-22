@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/NavBar.astro";
+import Hero from "../components/Hero.astro";
+import Products from "../components/Products.astro";
+import Features from "../components/Features.astro";
+import Reason from "../components/Reason.astro";
+import Footer from "../components/Footer.astro";
+import Mett from "../components/Mett.astro";
+const pageTitle = "MemhirET - E-Learning Providers";
+const pageDescription = "Making World-Class Education Accessible";
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  image="/og.jpg"
+  type="website"
+>
+  <Navbar />
+  <Hero />
+  <Mett />
+  <Products />
+  <Reason />
+  <Features />
+  <Footer />
+</Layout>

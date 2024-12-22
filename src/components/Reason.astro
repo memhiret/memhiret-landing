@@ -1,0 +1,144 @@
+---
+import { Users, Target, Building2, Network } from "lucide-react";
+
+const reasons = [
+  {
+    icon: Target,
+    title: "Making Education Accessible",
+    description:
+      "We break down barriers to quality education, ensuring world-class learning resources reach every student, regardless of their background.",
+  },
+  {
+    icon: Users,
+    title: "Tailored Learning Experiences",
+    description:
+      "Every student learns differently. We create personalized educational journeys that adapt to individual needs and learning styles.",
+  },
+  {
+    icon: Building2,
+    title: "Building Strong Ecosystems",
+    description:
+      "We create comprehensive educational environments that connect students, teachers, and institutions for optimal learning outcomes.",
+  },
+  {
+    icon: Network,
+    title: "Uniting Stakeholders",
+    description:
+      "We bring together schools, parents, and educators to create a collaborative community focused on student success.",
+  },
+];
+---
+
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div class="absolute inset-0 -z-10">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--color-grokBlue-500-rgb),0.05)_0%,transparent_70%)]"
+    >
+    </div>
+  </div>
+
+  <div class="text-center mb-20 opacity-0 animate-fade-in">
+    <span
+      class="px-4 py-1.5 rounded-md text-sm font-medium bg-gray-300 text-memhirETBlue-500 mb-4 inline-block"
+    >
+      Why Choose Us
+    </span>
+    <h2
+      class="text-4xl md:text-5xl font-bold text-memhirETWhite-500 font-bauhaus mt-4"
+    >
+      Equitable and  <br />
+      <span
+        class="bg-clip-text text-transparent bg-gradient-to-r from-memhirETBlue-500 to-blue-400"
+      >
+        Accessible Education
+      </span>
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-8">
+    {
+      reasons.map((reason, index) => (
+        <div
+          class="group relative opacity-0"
+          style={`animation: fade-slide-up 0.6s ease-out ${index * 0.2}s forwards`}
+        >
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-memhirETBlue-500 to-blue-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-300" />
+          <div class="relative h-full p-8 rounded-2xl bg-memhirETBlack-500/90 border border-memhirETWhite-500/10 hover:border-memhirETBlue-500/50 transition duration-300 group-hover:translate-y-[-5px]">
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0 p-3 rounded-xl bg-gradient-to-br from-memhirETBlue-500 to-blue-400 rotate-0 group-hover:rotate-[360deg] transition-transform duration-700">
+                <reason.icon className="w-6 h-6 text-white stroke-[1.5]" />
+              </div>
+              <div class="space-y-3">
+                <h3 class="text-xl font-semibold text-memhirETWhite-500">
+                  {reason.title}
+                </h3>
+                <p class="text-memhirETWhite-500/70 text-sm leading-relaxed">
+                  {reason.description}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  @keyframes fade-slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  /* Optional: Only animate if user prefers motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .group {
+      animation: none;
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  const animateOnScroll = () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.visibility = "visible";
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+    document.querySelectorAll(".group").forEach((element: HTMLElement) => {
+      element.style.visibility = "hidden";
+      observer.observe(element);
+    });
+  };
+
+  animateOnScroll();
+</script>
